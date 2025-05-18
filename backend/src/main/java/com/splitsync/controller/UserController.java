@@ -1,2 +1,25 @@
-package com.splitsync.controller;public class UserController {
+package com.splitsync.controller;
+
+import com.splitsync.model.User;
+import com.splitsync.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
+
+@RestController
+@RequestMapping("/api/users")
+public class UserController {
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/join")
+    public User joinGroup(@RequestBody Map<String, Object> body) {
+        return userService.joinGroup(
+                Long.valueOf(body.get("groupId").toString()),
+                (String) body.get("name"),
+                (String) body.get("email"),
+                (String) body.get("upi")
+        );
+    }
 }

@@ -1,2 +1,6 @@
-package com.splitsync.repository;public interface UserRepository {
-}
+package com.splitsync.repository;
+
+import com.splitsync.model.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UserRepository extends JpaRepository<User, Long> {}
