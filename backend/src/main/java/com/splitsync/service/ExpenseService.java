@@ -2,10 +2,14 @@ package com.splitsync.service;
 
 import com.splitsync.model.Expense;
 import com.splitsync.model.Group;
+import com.splitsync.model.User;
 import com.splitsync.repository.ExpenseRepository;
 import com.splitsync.repository.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ExpenseService {
@@ -13,16 +17,14 @@ public class ExpenseService {
     @Autowired
     private ExpenseRepository expenseRepo;
 
+
+
     @Autowired
     private GroupRepository groupRepo;
 
     public Expense addExpense(Long groupID , Expense expense)
     {
-//        Group g = groupRepo.findById(groupID).orElseThrow();
-//        if(!g.isActive()) throw new RuntimeException("Group is not active yet..");
-//        expense.setGroup(g);
-//
-//        return expenseRepo.save(expense);
+
         Group g = groupRepo.findById(groupID).orElseThrow();
         if (!g.isActive()) throw new RuntimeException("Group is not active yet..");
 
@@ -34,4 +36,7 @@ public class ExpenseService {
 
         return savedExpense;
     }
+
+
+
 }
