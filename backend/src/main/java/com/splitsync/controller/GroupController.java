@@ -15,7 +15,11 @@ public class GroupController {
 
     @PostMapping
     public Group createGroup(@RequestBody Map<String, Object> body) {
-        return groupService.createGroup((String) body.get("name"), (int) body.get("totalMembers"));
+        String name = (String) body.get("name");
+        Number totalMembersNum = (Number) body.get("totalMembers"); // safer cast
+        int totalMembers = totalMembersNum.intValue(); // convert Number to int
+        return groupService.createGroup(name, totalMembers);
+//        return groupService.createGroup((String) body.get("name"), (int) body.get("totalMembers"));
     }
 
     @GetMapping("/{id}")
