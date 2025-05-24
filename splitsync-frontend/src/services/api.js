@@ -1,8 +1,9 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:8080/api",
+  baseURL: "https://splitsync.onrender.com/api",
 });
+
 
 export const createGroup = (data) => API.post("/groups", data);
 export const joinGroup = (data) => API.post("/users/join", data);
