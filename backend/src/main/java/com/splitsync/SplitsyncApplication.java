@@ -21,7 +21,7 @@ public class SplitsyncApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/api/**")
-						.allowedOrigins("http://localhost:3000") // Your React app
+						.allowedOrigins("http://localhost:3000", "https://splitsync.vercel.app") // Your React app
 						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 						.allowedHeaders("*")
 						.allowCredentials(true);
