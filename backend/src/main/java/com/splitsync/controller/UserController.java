@@ -7,6 +7,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+
+@CrossOrigin(
+        origins = {
+                "http://localhost:3000",
+                "https://splitsync.vercel.app",
+                "https://splitsync-9lwa.vercel.app"
+        },
+        allowCredentials = "true"
+)
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
