@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://splitsync.onrender.com/api",
+  baseURL: "https://splitsync.onrender.com",
   timeout: 10000,
   withCredentials: true,
   headers: {
@@ -9,8 +9,6 @@ const API = axios.create({
     'Accept': 'application/json'
   }
 });
-
-// Request interceptor for auth tokens if needed
 API.interceptors.request.use(config => {
   const token = localStorage.getItem('token');
   if (token) {
@@ -18,7 +16,6 @@ API.interceptors.request.use(config => {
   }
   return config;
 });
-
 export const createGroup = (data) => API.post("/groups", data);
 export const joinGroup = (data) => API.post("/users/join", data);
 export const getGroup = (id) => API.get(`/groups/${id}`);
