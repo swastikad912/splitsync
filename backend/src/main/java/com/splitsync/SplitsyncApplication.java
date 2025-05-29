@@ -21,10 +21,16 @@ public class SplitsyncApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/api/**")
-						.allowedOrigins("http://localhost:3000", "https://splitsync.vercel.app", "https://splitsync-9lwa.vercel.app")
-						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+						.allowedOrigins(
+								"http://localhost:3000",
+								"https://splitsync.vercel.app",
+								"https://splitsync-9lwa.vercel.app"
+						)
+						.allowedMethods("*")
 						.allowedHeaders("*")
-						.allowCredentials(true);
+						.exposedHeaders("Authorization")
+						.allowCredentials(true)
+						.maxAge(3600);
 			}
 		};
 	}
